@@ -2,14 +2,6 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 
-// router.use('/', require('./swagger'));
-
-// router.get('/', (req, res) => { 
-//     /**
-//      * #swagger.tags = ['API']
-//      */
-//     res.send('Library API'); });
-
 
 router.use('/users', require('./users'));
 

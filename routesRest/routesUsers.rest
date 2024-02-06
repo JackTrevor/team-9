@@ -1,0 +1,104 @@
+/////////////// L O C A L    H O S T ///////////////
+////////////////////////////////////////////////////
+
+// -----------------
+// ----  USERS  ----
+// -----------------
+
+### Get all users
+GET http://localhost:3000/users   
+
+
+### Get user by id
+GET http://localhost:3000/users/65c2a4da57f3af46b4d1486f
+
+
+
+### Create user
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json 
+
+{
+    "userFirstName": "Charlie",
+    "userLasttName": "Brown",
+    "phone": "5982566987",
+    "email": "charlie.brown@example.com",
+    "birthDate": "1993-04-05",
+    "address": "890 Maple Blvd, Riverside",
+    "jobTitle": "Coordinator"
+}
+
+
+
+### PUT change user
+PUT http://localhost:3000/users/65c2a4da57f3af46b4d1486f HTTP/1.1
+content-type: application/json
+
+{
+    "userFirstName": "Jane",
+    "userLasttName": "Smith",
+    "phone": "8028966987",
+    "email": "jane.smith@example.com",
+    "birthDate": "1985-08-22",
+    "address": "456 Oak Ave, Townsville",
+    "jobTitle": "Account Executive"
+}
+
+
+### DELETE user
+DELETE http://localhost:3000/users/65c2a68a57f3af46b4d14873 HTTP/1.1
+
+
+
+
+/////////////// P R O D U C T I O N ///////////////
+///////////////////////////////////////////////////
+
+// -----------------
+// ----  USERS  ----
+// -----------------
+
+
+### Get all users
+GET https://news-v00i.onrender.com/users 
+
+
+### Get user by id
+GET https://news-v00i.onrender.com/users/65c2a4da57f3af46b4d1486f
+
+
+
+### Create user
+POST https://news-v00i.onrender.com/users HTTP/1.1
+content-type: application/json 
+
+{
+    "userFirstName": "Charlie",
+    "userLasttName": "Brown",
+    "phone": "5982566987",
+    "email": "charlie.brown@example.com",
+    "birthDate": "1993-04-05",
+    "address": "890 Maple Blvd, Riverside",
+    "jobTitle": "Coordinator"
+}
+
+
+
+### PUT change user
+PUT https://news-v00i.onrender.com/users/65c2a4da57f3af46b4d1486f HTTP/1.1
+content-type: application/json
+
+{
+    "userFirstName": "Jane",
+    "userLasttName": "Smith",
+    "phone": "8028966987",
+    "email": "jane.smith@example.com",
+    "birthDate": "1985-08-22",
+    "address": "456 Oak Ave, Townsville",
+    "jobTitle": "Account Executive"
+}
+
+
+### DELETE user
+DELETE https://news-v00i.onrender.com/users/65c2a68a57f3af46b4d14873 HTTP/1.1
+

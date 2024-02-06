@@ -8,14 +8,14 @@ const usersController = require('../controllers/users');
 
 router.get('/', usersController.getAll);
 
-// router.get('/:id', usersController.getSingle);
+router.get('/:id', usersController.getSingle);
 
-// router.get('/personal/:id', usersController.getSinglePersonalId);
+router.post('/', usersController.createUser);
 
-// router.post('/', isAuthenticated, usersController.createuser);
+router.put('/:id', usersController.updateUser);
 
-// router.put('/:id', isAuthenticated, usersController.updateuser);
+router.delete('/:id', usersController.deleteUser);
 
-// router.delete('/:id', isAuthenticated, usersController.deleteuser);
+
 
 module.exports = router;
