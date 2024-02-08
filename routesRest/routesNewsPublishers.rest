@@ -1,0 +1,65 @@
+*^# LOCALHOST
+### Get all news publishers
+GET http://localhost:3000/news-publishers  
+
+### Get news publisher by id 
+GET http://localhost:3000/users/65c2a1248c356ca937f9b2d4
+
+### Create a new news publisher
+POST http://localhost:3000/news-publishers HTTP/1.1
+content-type: application/json
+
+{
+      "publisherName": "ABC News",
+      "publisherEmail": "abcnews@cnn.com",
+      "publisherCity": "Burbank, California, US",
+      "publisherEstablished": "1943"
+}
+
+###Delete a news publisher
+DELETE http://localhost:3000/news-publishers/65c2a1248c356ca937f9b2d4 
+
+### Update news publisher by id
+PUT http://localhost:3000/news-publishers/65c2a1248c356ca937f9b2d4  HTTP/1.1
+content-type: application/json
+
+{
+      "publisherName": "CNN",
+      "publisherEmail": "infonews@cnn.com",
+      "publisherCity": "Atlanta, Georgia, US",
+      "publisherEstablished": "1981"
+}
+
+
+##################################################
+# DEPLOYMENT via Render
+
+### Get all news publishers 
+GET https://news-v00i.onrender.com/news-publishers
+
+### Get news publisher by id 
+GET https://news-v00i.onrender.com/news-publishers/65c2a1248c356ca937f9b2d4
+
+### Create a new news publisher
+POSThttps://news-v00i.onrender.com/news-publishers HTTP/1.1 
+content-type: application/json
+
+{
+      "publisherName": "ABC News",
+      "publisherEmail": "abcnews@cnn.com",
+      "publisherCity": "Burbank, California, US",
+      "publisherEstablished": "1943"
+}
+
+###Delete a news publisher
+DELETE https://news-v00i.onrender.com/news-publishers/65c2a1248c356ca937f9b2d4
+
+### Update news publisher by id
+PUT https://news-v00i.onrender.com/news-publishers/65c2a1248c356ca937f9b2d4  HTTP/1.1 
+content-type: application/json
+{
+      "publisherName": "CNN",
+      "publisherEmail": "infonews@cnn.com",
+      "publisherCity": "Atlanta, Georgia, US",
+      "publisherEstablished": "1981"
+}
