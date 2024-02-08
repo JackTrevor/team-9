@@ -1,19 +1,18 @@
 const mongodb = require('../db/connect');
-const createError = require('http-errors');
-
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res, next) => {
+
+const getAll = async (req, res) => {
   /**
-   * #swagger.tags = ['Authors']
-   * #swagger.summary = "List all the authors"
+   * #swagger.tags = ['Users']
+   * #swagger.summary = "List all the users"
   */
   
   try {
     const result = await mongodb.getDb().db().collection('users').find();
     result.toArray().then((lists) => {
       if (lists.length == 0) {
-        res.status(404).send(createError('There are no registered authors'));
+        res.status(404).json( {message: 'There are no registered users'});
         return;
       }
       res.setHeader('Content-Type', 'application/json');
@@ -21,169 +20,139 @@ const getAll = async (req, res, next) => {
     });
 
   } catch (err) {
-    next (err);
+    res.status(500).json({message: err.message});
   }
 };
 
 
-// const getSingle = async (req, res, next) => {
-//   /**
-//    * #swagger.tags = ['Authors']
-//    * #swagger.summary = "Get the author by the ID register in MongoDB"
-//    * #swagger.description = "Enter the author ID."
-//   */
+const getSingle = async (req, res) => {
+  /**
+   * #swagger.tags = ['Users']
+   * #swagger.summary = "Get the user by the ID"
+  */
 
-//   try {
-//     if (!ObjectId.isValid(req.params.id)) {
-//       throw createError(400, 'You must use a valid author ID to find a author.')
-//     }
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json({message: 'You must use a valid user ID to find an user.'});
+    }
 
-//     const authorIdDB = new ObjectId(req.params.id);
-//     const result = await mongodb.getDb().db().collection('authors').find({ _id: authorIdDB });
+    const userIdDB = new ObjectId(req.params.id);
+    const result = await mongodb.getDb().db().collection('users').find({ _id: userIdDB });
 
-//     result.toArray().then((lists) => {
-//         if (lists.length == 0) {
-//           res.status(404).send(createError('The author with that ID does not exist.'));
-//           return;
-//         }
+    result.toArray().then((lists) => {
+        if (lists.length == 0) {
+          res.status(404).json({message: 'The user with that ID does not exist.'});
+          return;
+        }
 
-//         res.setHeader('Content-Type', 'application/json');
-//         res.status(200).json(lists[0]);
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-
-// const getSinglePersonalId = async (req, res, next) => {
-//   /**
-//    * #swagger.tags = ['Authors']
-//    * #swagger.summary = "Get the author by its personal ID"
-//    * #swagger.description = "Enter the author ID."
-//   */
-
-//   try {
-
-//     const authorId = req.params.id;
-//     const result = await mongodb.getDb().db().collection('authors').find({ authorId: authorId });
-
-//     result.toArray().then((lists) => {
-//         if (lists.length == 0) {
-//           res.status(404).send(createError('The author with that ID does not exist.'));
-//           return;
-//         }
-
-//         res.setHeader('Content-Type', 'application/json');
-//         res.status(200).json(lists[0]);
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists[0]);
+    });
+  } catch (err) {
+    res.status(500).json({message: err.message});
+  }
+};
 
 
 
-// const createAuthor = async (req, res, next) => {  
-//   /**
-//     * #swagger.tags = ['Authors']
-//     * #swagger.summary = "Create a new author"
-//     * #swagger.description = "Enter the author information in the body template provided, authorID is created automatically."
-//   */
+const createUser = async (req, res) => {  
+  /**
+    * #swagger.tags = ['Users']
+    * #swagger.summary = "Create a new user"
+    * #swagger.description = "Enter the user information in the body template provided, userID is created automatically."
+  */
 
+  try {
 
-//   try {
+    const userBody = {
+      userFirstName: req.body.userFirstName,
+      userLasttName: req.body.userLasttName,
+      phone: req.body.phone,
+      email: req.body.email,
+      birthDate: req.body.birthDate,
+      address: req.body.address,
+      jobTitle: req.body.jobTitle
+    };
 
-//     const authorBody = {
-//       authorId: req.body.authorId,
-//       authorFirstName: req.body.authorFirstName,
-//       authorLasttName: req.body.authorLasttName,
-//       email: req.body.email,
-//       authorBio: req.body.authorBio
-//     };
+    const response = await await mongodb.getDb().db().collection('users').insertOne(userBody);
 
-//     const author = await authorSchema.validateAsync(authorBody);
-//     const response = await await mongodb.getDb().db().collection('authors').insertOne(author);
-
-//     if (response.acknowledged) {
-//       res.status(201).json(response);
-//     } else {
-//       throw createError(500, 'Some error occurred while creating the author.')
-//     }
-//   } catch (err) {
-//     if (err.isJoi === true) err.status = 422
-//     next(err);
-//   }
-// };
+    if (response.acknowledged) {
+      res.status(201).json(response);
+    } else {
+      res.status(500).json({message: 'Some error occurred while creating the user.'});
+    }
+  } catch (err) {
+    res.status(500).json({message: err.message});
+  }
+};
 
   
-// const updateAuthor = async (req, res, next) => {
-//   /**
-//    * #swagger.tags = ['Authors']
-//    * #swagger.summary = "Update author information by ID"
-//    * #swagger.description = "Enter the author ID and any necessary changes in the body template provided."
-//   */
+const updateUser = async (req, res) => {
+  /**
+   * #swagger.tags = ['Users']
+   * #swagger.summary = "Update user information by ID"
+   * #swagger.description = "Enter the user ID and any necessary changes in the body template provided."
+  */
 
-//   const authorBody = {
-//     authorId: req.body.authorId,
-//     authorFirstName: req.body.authorFirstName,
-//     authorLasttName: req.body.authorLasttName,
-//     email: req.body.email,
-//     authorBio: req.body.authorBio,
-//   };
+  const userBody = {
+    userFirstName: req.body.userFirstName,
+    userLasttName: req.body.userLasttName,
+    phone: req.body.phone,
+    email: req.body.email,
+    birthDate: req.body.birthDate,
+    address: req.body.address,
+    jobTitle: req.body.jobTitle
+  };
 
-//   try {
-//     if (!ObjectId.isValid(req.params.id)) {
-//       throw createError(400, 'You must use a valid author ID to find an author.')
-//     }
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json({message: 'You must use a valid user ID to find an user.'});
+    }
 
-//     const authorId = new ObjectId(req.params.id);
-//     const author = await authorSchema.validateAsync(authorBody);
-//     const response = await mongodb.getDb().db().collection('authors').replaceOne({ _id: authorId }, author);
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDb().db().collection('users').replaceOne({ _id: userId }, userBody);
 
-//     if (response.modifiedCount > 0) {
-//       res.status(204).json(response);
-//     } else {
-//       res.status(500).json(response.error || 'Some error occurred while updating the author.');
-//     }
-//   } catch (err) {
-//     if (err.isJoi === true) err.status = 422
-//     next(err);
-//   }
+    if (response.modifiedCount > 0) {
+      res.status(204).json(response);
+    } else {
+      res.status(500).json(response.error || 'Some error occurred while updating the user.');
+    }
+  } catch (err) {
+    res.status(500).json({message: err.message});
+  }
   
-// };
+};
 
 
 
-// const deleteAuthor = async (req, res, next) => {
-//   /**
-//    * #swagger.tags = ['Authors']
-//    * #swagger.summary = "Remove a author by ID"
-//    * #swagger.description = "Enter the author ID <p> **WARNING:** The author will be permanently removed from the database.<p>"
-//   */
-//   try {
-//     if (!ObjectId.isValid(req.params.id)) {
-//       throw createError(400, 'You must use a valid author ID to find an author.')
-//     }
-//     const authorId = new ObjectId(req.params.id);
-//     const response = await mongodb.getDb().db().collection('authors').deleteOne({ _id: authorId }, true);
+const deleteUser = async (req, res) => {
+  /**
+   * #swagger.tags = ['Users']
+   * #swagger.summary = "Remove a user by ID"
+   * #swagger.description = "Enter the user ID <p> **WARNING:** The user will be permanently removed from the database.<p>"
+  */
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json({message: 'You must use a valid user ID to find an user.'});
+    }
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDb().db().collection('users').deleteOne({ _id: userId }, true);
 
-//     if (response.deletedCount > 0) {
-//       res.status(204).json(response);
-//     } else {
-//       res.status(500).json(response.error || 'Some error occurred while deleting the author.');
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+    if (response.deletedCount > 0) {
+      res.status(204).json(response);
+    } else {
+      res.status(500).json(response.error || 'Some error occurred while deleting the user.');
+    }
+  } catch (err) {
+    res.status(500).json({message: err.message});
+  }
+};
 
 
 module.exports = {
-    getAll
-    // getSingle,
-    // getSinglePersonalId,
-    // createAuthor,
-    // updateAuthor,
-    // deleteAuthor
+    getAll,
+    getSingle,
+    createUser,
+    updateUser,
+    deleteUser
 };
