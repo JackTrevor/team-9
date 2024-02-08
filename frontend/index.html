@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub OAuth</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <div class="content unauthorized">
+        <div>
+          <img class="imgGitHub" src="OAuthImg.png" />
+        </div>
+        <div>
+          <a class="btn" href="/login">Sing In with GitHub</a>
+        </div>
+      </div>
+      <div class="content authorized" style="display: none">
+        <div>
+          <img class="imgGitHub" src="OAuthImg.png" />
+        </div>
+        <div>
+          <h1>You're Authorized</h1>
+          <a class="btn" href="/logout">LOGOUT</a>
+        </div>
+      </div>
+</body>
+
+</html>
