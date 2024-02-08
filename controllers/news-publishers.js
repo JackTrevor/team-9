@@ -57,7 +57,7 @@ const getSingle = async (req, res, next) => {
 
 const createPublisher = async (req, res) => {  
   /**
-    * #swagger.tags = ['News Publisher']
+    * #swagger.tags = ['News Publishers']
     * #swagger.summary = "Create a new news publisher"
     * #swagger.description = "Enter the news publisher in the body template provided, publisherId is created automatically."
   */
@@ -66,7 +66,6 @@ const createPublisher = async (req, res) => {
   try {
 
     const publisherBody = {
-      publisherId: req.body.publisherId,
       publisherName: req.body.publisherName,
       publisherEmail: req.body.publisherEmail,
       publisherCity: req.body.publisherCity,
@@ -94,7 +93,6 @@ const updatePublisher = async (req, res) => {
   */
 
   const publisherBody = {
-    publisherId: req.body.publisherId,
     publisherName: req.body.publisherName,
     publisherEmail: req.body.publisherEmail,
     publisherCity: req.body.publisherCity,
