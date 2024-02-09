@@ -5,10 +5,10 @@ const doc = {
     title: 'News Aggregator API',
     description: 'News Aggregator API containing relevant news from different news publishers and their articles.'
   },
-  // host: 'news-v00i.onrender.com',
-  host: 'localhost:3000',
-  // schemes: ['https']
-  schemes: ['http']
+  host: 'news-v00i.onrender.com',
+  // host: 'localhost:3000',
+  schemes: ['https']
+  // schemes: ['http']
  
 };
 

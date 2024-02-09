@@ -1,5 +1,5 @@
 {
-  "name": "newsa_aggregator",
+  "name": "news_aggregator",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -20,7 +20,6 @@
     "express": "^4.16.3",
     "express-session": "^1.18.0",
     "express-validator": "7.0.1",
-    "http-errors": "^2.0.0",
     "mongodb": "^4.4.0",
     "mongoose": "^8.1.0",
     "passport": "^0.7.0",
