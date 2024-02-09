@@ -6,6 +6,7 @@ router.use('/', require('./swagger'));
 
 router.use('/users', require('./users'));
 router.use('/news-publishers', require('./news-publishers'));
+router.use('/articles', require('./articles'));
 
 // OAuth
 router.get('/login', passport.authenticate('github'), (req, res) => {});
