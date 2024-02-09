@@ -1,0 +1,77 @@
+*^# LOCALHOST
+### Get all articles
+GET http://localhost:3000/articles 
+
+### Get article by id 
+GET http://localhost:3000/articles/65c6653124701d148680b721
+
+### Create an article
+POST http://localhost:3000/articles HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Article5",
+    "author": "Author5",
+    "publication_date": "YYYY-MM-DD",
+    "content": "The main content of the article",
+    "keywords": ["keyword1", "keyword2", "keyword3"],
+    "source": "The source of the article (e.g., website name)",
+    "url": "URL link to the article"
+}
+
+###Delete an article
+DELETE http://localhost:3000/news-publishers/65c6653124701d148680b721 
+
+### Update an article by id
+PUT http://localhost:3000/news-publishers/65c6653124701d148680b721  HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Article5",
+    "author": "Author5",
+    "publication_date": "YYYY-MM-DD",
+    "content": "The main content of the article",
+    "keywords": ["keyword1", "keyword2", "keyword3"],
+    "source": "The source of the article (e.g., website name)",
+    "url": "URL link to the article"
+}
+
+
+##################################################
+# DEPLOYMENT via Render
+
+### Get all news publishers 
+GET https://news-v00i.onrender.com/articles
+
+### Get news publisher by id 
+GET https://news-v00i.onrender.com/articles/65c6653124701d148680b721
+
+### Create a new news publisher
+POSThttps://news-v00i.onrender.com/articles HTTP/1.1 
+content-type: application/json
+
+{
+    "title": "Article5",
+    "author": "Author5",
+    "publication_date": "YYYY-MM-DD",
+    "content": "The main content of the article",
+    "keywords": ["keyword1", "keyword2", "keyword3"],
+    "source": "The source of the article (e.g., website name)",
+    "url": "URL link to the article"
+}
+
+###Delete an article
+DELETE https://news-v00i.onrender.com/articles/65c6653124701d148680b721
+
+### Update an article by id
+PUT https://news-v00i.onrender.com/articles/65c6653124701d148680b721  HTTP/1.1 
+content-type: application/json
+{
+    "title": "Article5",
+    "author": "Author5",
+    "publication_date": "YYYY-MM-DD",
+    "content": "The main content of the article",
+    "keywords": ["keyword1", "keyword2", "keyword3"],
+    "source": "The source of the article (e.g., website name)",
+    "url": "URL link to the article"
+}
