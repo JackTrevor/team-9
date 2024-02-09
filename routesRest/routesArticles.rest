@@ -1,8 +1,8 @@
 *^# LOCALHOST
 ### Get all articles
-GET http://localhost:3000/articles 
+GET http://localhost:3000/articles
 
-### Get article by id 
+### Get article by id
 GET http://localhost:3000/articles/65c6653124701d148680b721
 
 ### Create an article
@@ -20,7 +20,7 @@ content-type: application/json
 }
 
 ###Delete an article
-DELETE http://localhost:3000/news-publishers/65c6653124701d148680b721 
+DELETE http://localhost:3000/news-publishers/65c6653124701d148680b721
 
 ### Update an article by id
 PUT http://localhost:3000/news-publishers/65c6653124701d148680b721  HTTP/1.1
@@ -40,14 +40,14 @@ content-type: application/json
 ##################################################
 # DEPLOYMENT via Render
 
-### Get all news publishers 
+### Get all news publishers
 GET https://news-v00i.onrender.com/articles
 
-### Get news publisher by id 
+### Get news publisher by id
 GET https://news-v00i.onrender.com/articles/65c6653124701d148680b721
 
 ### Create a new news publisher
-POSThttps://news-v00i.onrender.com/articles HTTP/1.1 
+POST https://news-v00i.onrender.com/articles HTTP/1.1
 content-type: application/json
 
 {
@@ -64,7 +64,7 @@ content-type: application/json
 DELETE https://news-v00i.onrender.com/articles/65c6653124701d148680b721
 
 ### Update an article by id
-PUT https://news-v00i.onrender.com/articles/65c6653124701d148680b721  HTTP/1.1 
+PUT https://news-v00i.onrender.com/articles/65c6653124701d148680b721  HTTP/1.1
 content-type: application/json
 {
     "title": "Article5",

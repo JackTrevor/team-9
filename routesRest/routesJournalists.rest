@@ -1,0 +1,89 @@
+/////////////// L O C A L    H O S T ///////////////
+////////////////////////////////////////////////////
+
+// -----------------
+// ----  Journalists  ----
+// -----------------
+
+### Get all journalists
+GET http://localhost:3000/journalists
+
+
+### Get journalist by id
+GET http://localhost:3000/journalists/65c68154276bf5b1f5fabd65
+
+
+### Create journalist
+POST http://localhost:3000/journalists HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Test name",
+  "publisher": "Test publisher",
+  "tags": ["Test"],
+  "email": "test@email.com",
+  "twitter": "@test"
+}
+
+
+### Update journalist
+PUT http://localhost:3000/journalists/65c68a54f0a284f68e3023fc HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Jane Doe",
+  "publisher": "New York Times",
+  "tags": ["Technology", "Science"],
+  "email": "jane.doe@nytimes.com",
+  "twitter": "@fieldToUpdate"
+}
+
+
+### Delete journalist
+DELETE http://localhost:3000/journalists/65c68a54f0a284f68e3023fc HTTP/1.1
+
+
+/////////////// P R O D U C T I O N ///////////////
+///////////////////////////////////////////////////
+
+// -----------------
+// ----  Journalists  ----
+// -----------------
+
+
+### Get all journalists
+GET https://news-v00i.onrender.com/journalists
+
+
+### Get journalist by id
+GET https://news-v00i.onrender.com/journalists/65c68154276bf5b1f5fabd65
+
+
+### Create journalist
+POST https://news-v00i.onrender.com/journalists HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Test name",
+  "publisher": "Test publisher",
+  "tags": ["Test"],
+  "email": "test@email.com",
+  "twitter": "@test"
+}
+
+
+### Update journalist
+PUT https://news-v00i.onrender.com/journalists/65c2a4da57f3af46b4d1486f HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Jane Doe",
+  "publisher": "New York Times",
+  "tags": ["Technology", "Science"],
+  "email": "jane.doe@nytimes.com",
+  "twitter": "@fieldToUpdate"
+}
+
+
+### Delete journalist
+DELETE https://news-v00i.onrender.com/journalists/65c2a68a57f3af46b4d14873 HTTP/1.1
