@@ -6,7 +6,7 @@
 // -----------------
 
 ### Get all users
-GET http://localhost:3000/users   
+GET http://localhost:3000/users
 
 
 ### Get user by id
@@ -16,11 +16,11 @@ GET http://localhost:3000/users/65c2a4da57f3af46b4d1486f
 
 ### Create user
 POST http://localhost:3000/users HTTP/1.1
-content-type: application/json 
+content-type: application/json
 
 {
     "userFirstName": "Charlie",
-    "userLasttName": "Brown",
+    "userLastName": "Brown",
     "phone": "5982566987",
     "email": "charlie.brown@example.com",
     "birthDate": "1993-04-05",
@@ -36,7 +36,7 @@ content-type: application/json
 
 {
     "userFirstName": "Jane",
-    "userLasttName": "Smith",
+    "userLastName": "Smith",
     "phone": "8028966987",
     "email": "jane.smith@example.com",
     "birthDate": "1985-08-22",
@@ -60,7 +60,7 @@ DELETE http://localhost:3000/users/65c2a68a57f3af46b4d14873 HTTP/1.1
 
 
 ### Get all users
-GET https://news-v00i.onrender.com/users 
+GET https://news-v00i.onrender.com/users
 
 
 ### Get user by id
@@ -70,11 +70,11 @@ GET https://news-v00i.onrender.com/users/65c2a4da57f3af46b4d1486f
 
 ### Create user
 POST https://news-v00i.onrender.com/users HTTP/1.1
-content-type: application/json 
+content-type: application/json
 
 {
     "userFirstName": "Charlie",
-    "userLasttName": "Brown",
+    "userLastName": "Brown",
     "phone": "5982566987",
     "email": "charlie.brown@example.com",
     "birthDate": "1993-04-05",
@@ -90,7 +90,7 @@ content-type: application/json
 
 {
     "userFirstName": "Jane",
-    "userLasttName": "Smith",
+    "userLastName": "Smith",
     "phone": "8028966987",
     "email": "jane.smith@example.com",
     "birthDate": "1985-08-22",

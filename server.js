@@ -35,8 +35,8 @@ app
   .use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']}))
   .use(cors({ origin: '*'}))
   .use('/', require('./routes'));
-  
- 
+
+
 
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
@@ -46,7 +46,7 @@ passport.use(new GitHubStrategy({
 function(accessToken, refreshToken, profile, done) {
   // User.findOrCreate({ githubId: profile.id }, function (err, user) {
     return done(null, profile);
-  // }) 
+  // })
 }));
 
 passport.serializeUser((user, done) => {
@@ -76,6 +76,6 @@ mongodb.initDb((err) => {
     if (err) {
       console.log(err);
     } else {
-        app.listen(port, () => {console.log(`Database is listening on port ${port}`)});
+        app.listen(port, () => {console.log(`Server is listening on port ${port}`)});
     }
   });

@@ -7,11 +7,11 @@ const getAll = async (req, res) => {
    * #swagger.tags = ['Users']
    * #swagger.summary = "List all the users"
   */
-  
+
   try {
     const result = await mongodb.getDb().db().collection('users').find();
     result.toArray().then((lists) => {
-      if (lists.length == 0) {
+      if (lists.length === 0) {
         res.status(404).json( {message: 'There are no registered users'});
         return;
       }
@@ -40,7 +40,7 @@ const getSingle = async (req, res) => {
     const result = await mongodb.getDb().db().collection('users').find({ _id: userIdDB });
 
     result.toArray().then((lists) => {
-        if (lists.length == 0) {
+        if (lists.length === 0) {
           res.status(404).json({message: 'The user with that ID does not exist.'});
           return;
         }
@@ -55,7 +55,7 @@ const getSingle = async (req, res) => {
 
 
 
-const createUser = async (req, res) => {  
+const createUser = async (req, res) => {
   /**
     * #swagger.tags = ['Users']
     * #swagger.summary = "Create a new user"
@@ -66,7 +66,7 @@ const createUser = async (req, res) => {
 
     const userBody = {
       userFirstName: req.body.userFirstName,
-      userLasttName: req.body.userLasttName,
+      userLastName: req.body.userLastName,
       phone: req.body.phone,
       email: req.body.email,
       birthDate: req.body.birthDate,
@@ -74,7 +74,7 @@ const createUser = async (req, res) => {
       jobTitle: req.body.jobTitle
     };
 
-    const response = await await mongodb.getDb().db().collection('users').insertOne(userBody);
+    const response = await mongodb.getDb().db().collection('users').insertOne(userBody);
 
     if (response.acknowledged) {
       res.status(201).json(response);
@@ -86,7 +86,7 @@ const createUser = async (req, res) => {
   }
 };
 
-  
+
 const updateUser = async (req, res) => {
   /**
    * #swagger.tags = ['Users']
@@ -96,7 +96,7 @@ const updateUser = async (req, res) => {
 
   const userBody = {
     userFirstName: req.body.userFirstName,
-    userLasttName: req.body.userLasttName,
+    userLastName: req.body.userLastName,
     phone: req.body.phone,
     email: req.body.email,
     birthDate: req.body.birthDate,
@@ -120,7 +120,7 @@ const updateUser = async (req, res) => {
   } catch (err) {
     res.status(500).json({message: err.message});
   }
-  
+
 };
 
 
