@@ -79,7 +79,7 @@
                 "userFirstName": {
                   "example": "any"
                 },
-                "userLasttName": {
+                "userLastName": {
                   "example": "any"
                 },
                 "phone": {
@@ -166,7 +166,7 @@
                 "userFirstName": {
                   "example": "any"
                 },
-                "userLasttName": {
+                "userLastName": {
                   "example": "any"
                 },
                 "phone": {
