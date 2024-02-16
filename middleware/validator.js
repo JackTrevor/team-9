@@ -5,7 +5,7 @@ const collections = {
   users: ['userFirstName', 'userLastName', 'phone', 'email', 'birthDate', 'address', 'jobTitle'],
   publishers: ['publisherName', 'publisherEmail', 'publisherCity', 'publisherEstablished'],
   journalists: ['name', 'tags', 'email', 'publisher', 'twitter'],
-  articles: ['title', 'author', 'publication_date', 'content', 'keywords', 'source,url']
+  articles: ['title', 'author', 'publication_date', 'content', 'keywords', 'source', 'url']
 }
 const validationRules = {};
 
