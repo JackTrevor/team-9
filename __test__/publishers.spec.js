@@ -20,7 +20,7 @@ describe('insert', () => {
 
 ////////////
     it('should insert a publisher into collection', async () => {
-      const publishers = db.collection('publishers');
+      const publishers = db.collection('news-publishers');
   
       const mockpublisher = {_id: 'some-publisher-id', name: 'mockName'};
       await publishers.insertOne(mockpublisher);
@@ -32,7 +32,7 @@ describe('insert', () => {
 
 ////////////
     it('should change a publisher into collection', async () => {
-      const publishers = db.collection('publishers');
+      const publishers = db.collection('news-publishers');
   
       const mockpublisher = {_id: 'some-publisher-id', name: 'newMockName'};
       await publishers.replaceOne({ _id: 'some-publisher-id' }, mockpublisher);
@@ -44,7 +44,7 @@ describe('insert', () => {
 
 ////////////
     it('should delete a publisher into collection', async () => {
-      const publishers = db.collection('publishers');
+      const publishers = db.collection('news-publishers');
   
       const mockpublisher = {_id: 'some-publisher-id'};
       await publishers.deleteOne(mockpublisher);
