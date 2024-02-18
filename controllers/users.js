@@ -65,7 +65,6 @@ const createUser = async (req, res) => {
   try {
 
     const userBody = {
-      _id: new ObjectId(req.body.id),
       userFirstName: req.body.userFirstName,
       userLastName: req.body.userLastName,
       phone: req.body.phone,

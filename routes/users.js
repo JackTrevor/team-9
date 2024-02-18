@@ -12,11 +12,4 @@ router.put('/:id', isAuthenticated, validations().users, validate, usersControll
 router.delete('/:id', isAuthenticated, usersController.deleteUser);
 
 
-// TEST(supertest)  - noAuthenticated
-
-// router.post('/', validations().users, validate, usersController.createUser);
-// router.put('/:id', validations().users, validate, usersController.updateUser);
-// router.delete('/:id', usersController.deleteUser);
-
-
 module.exports = router;
